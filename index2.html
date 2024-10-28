@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hitung Keliling dan Luas Persegi</title>
+  <link rel="stylesheet" href="style.css"> <!-- Hubungkan dengan CSS eksternal -->
+</head>
+<body>
+  <div class="container">
+    <h2>Hitung Keliling dan Luas Persegi</h2>
+
+    <label for="sisi">Masukkan panjang sisi:</label>
+    <input type="number" id="sisi" placeholder="Masukkan sisi..." />
+
+    <button onclick="hitungPersegi()">Hitung</button>
+
+    <h3>Hasil:</h3>
+    <p id="keliling"></p>
+    <p id="kategoriKeliling"></p>
+    <p id="luas"></p>
+    <p id="kategoriLuas"></p>
+  </div>
+
+  <script>
+    function hitungPersegi() {
+      // Ambil nilai input dari pengguna
+      let sisi = parseFloat(document.getElementById("sisi").value);
+
+      // Validasi input
+      if (isNaN(sisi) || sisi <= 0) {
+        alert("Masukkan nilai sisi yang valid!");
+        return;
+      }
+
+      // Hitung keliling dan luas
+      let keliling = 4 * sisi;
+      let luas = sisi * sisi;
+
+      // Kategori keliling sesuai ketentuan
+      let kategoriKeliling;
+      if (keliling >= 500) {
+        kategoriKeliling = "Keliling: Ukuran besar";
+      } else if (keliling >= 100) {
+        kategoriKeliling = "Keliling: Ukuran sedang";
+      } else {
+        kategoriKeliling = "Keliling: Ukuran kecil";
+      }
+
+      // Kategori luas sesuai ketentuan
+      let kategoriLuas;
+      if (luas >= 500) {
+        kategoriLuas = "Luas: Ukuran besar";
+      } else if (luas >= 100) {
+        kategoriLuas = "Luas: Ukuran sedang";
+      } else {
+        kategoriLuas = "Luas: Ukuran kecil";
+      }
+
+      // Tampilkan hasil di elemen HTML
+      document.getElementById("keliling").innerText = `Keliling: ${keliling}`;
+      document.getElementById("kategoriKeliling").innerText = kategoriKeliling;
+      document.getElementById("luas").innerText = `Luas: ${luas}`;
+      document.getElementById("kategoriLuas").innerText = kategoriLuas;
+    }
+  </script>
+</body>
+</html>
